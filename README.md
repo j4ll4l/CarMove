@@ -1,18 +1,37 @@
 # CarMove
 
-This template should help get you started developing with Vue 3 in Vite.
+# CarMove
 
-## Recommended IDE Setup
+CarMove est une application web développée avec Vue 3 et Vite, dédiée à la présentation de véhicules disponibles à la vente.  
+Pour l’instant, seule la partie **front-end** est réalisée ; la partie **back-end** sera développée prochainement en Symfony.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Fonctionnalités réalisées
 
-## Type Support for `.vue` Imports in TS
+- **Page d’accueil** avec header et footer.
+- **Page des véhicules disponibles** :
+  - Affichage des véhicules sous forme de cartes, avec leurs principales informations (nom, prix, kilométrage, année, énergie, etc.).
+  - Quelques petits icônes pour illustrer certaines informations.
+  - Trois filtres (marque, prix, carburant) présents en haut de la page, mais **pas encore actifs**.
+- **Navigation** entre les pages grâce au router Vue.
+- **Code organisé** : routes dans un fichier dédié, composants réutilisables, props typées avec TypeScript et valeurs par défaut.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## Limitations actuelles
 
-## Customize configuration
+- **La charte graphique** n’est pas encore définie.
+- **Les interfaces utilisateur** (UI) sont encore très simples ou manquantes.
+- **Les filtres** ne sont pas encore actifs.
+- **Le back-end** n’est pas encore développé.
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## À venir
+
+- **Back-end en Symfony** pour la gestion dynamique des véhicules et des filtres.
+- **Activation des filtres** pour permettre la recherche dynamique.
+- **Amélioration de la charte graphique** et ajout de nouveaux éléments visuels.
+- **Création et intégration des interfaces utilisateur** plus complètes.
+
+---
+
+Ce projet constitue une base front-end moderne et évolutive pour une application de gestion de véhicules, en attendant l’intégration du back-end, des interfaces et des fonctionnalités avancées.
 
 ## Project Setup
 

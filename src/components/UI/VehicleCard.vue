@@ -1,12 +1,34 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+interface Props {
+  id?: number
+  name?: string
+  image?: string
+  prix?: number
+  info?: {
+    km?: number
+    annee?: number
+    energie?: string
+  }
+}
+const props = withDefaults(defineProps<Props>(), {
+  name: 'Vehicule Name',
+  image: '/vehicle_photo.jpg',
+  prix: 20000,
+  info: () => ({ km: 100000, annee: 2025, energie: 'Diesel' }),
+})
+</script>
 
 <template>
   <div class="custom-card">
-    <img src="/vehicle_photo.jpg" alt="..." class="custom-card-img" />
+    <img :src="props.image" alt="..." class="custom-card-img" />
     <div class="custom-card-body">
-      <h5 class="custom-card-title">Vehicle Name</h5>
-      <p class="custom-card-prix">20 000€</p>
-      <p class="custom-card-info"><span>50 000km</span><span> 2025</span><span> Diesel</span></p>
+      <h5 class="custom-card-title">{{ props.name }}</h5>
+      <p class="custom-card-prix">{{ props.prix }}€</p>
+      <p class="custom-card-info">
+        <span>{{ props.info.km }}km</span>
+        <span> {{ props.info.annee }}</span>
+        <span> {{ props.info.energie }}</span>
+      </p>
       <a href="#" class="custom-btn">Voir Plus</a>
     </div>
   </div>
@@ -46,8 +68,9 @@
 
 .custom-card-prix {
   margin: 0;
-  color: blue;
+  color: #284cff;
   font-size: 1rem;
+  font-weight: bold;
 }
 .custom-card-info {
   display: flex;

@@ -23,25 +23,20 @@ import VehicleCard from '@/components/UI/VehicleCard.vue'
   <div class="app-layout">
     <TheHeader />
     <main>
-      <VehicleCard />
+      <RouterView />
     </main>
     <TheFooter />
   </div>
 </template>
 
 <style scoped>
-/* template {
+/* .app-layout {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 } */
-.app-layout {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
 main {
-  flex: 1;
+  /* flex: 1; */
   display: flex;
   justify-content: center;
   align-items: center;

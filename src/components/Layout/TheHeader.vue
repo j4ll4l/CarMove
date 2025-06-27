@@ -6,9 +6,9 @@
       <div id="logo"><h1>CarMove</h1></div>
       <div>
         <ul>
-          <li>Accueil</li>
-          <li>Véhicules</li>
-          <li>Contact</li>
+          <li><a href="">Accueil</a></li>
+          <li><a href="">Véhicules</a></li>
+          <li><a href="">Contact</a></li>
         </ul>
       </div>
     </nav>
@@ -23,7 +23,7 @@ nav {
   background-color: #284cff;
   color: white;
   padding: 1rem 1.5rem;
-  margin-bottom: 65vh;
+  margin-bottom: 1.5rem;
 }
 ul {
   display: flex;
@@ -31,5 +31,9 @@ ul {
 }
 ul li {
   list-style: none;
+}
+ul li a {
+  text-decoration: none;
+  color: inherit;
 }
 </style>
