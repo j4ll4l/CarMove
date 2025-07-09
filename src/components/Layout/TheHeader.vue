@@ -6,8 +6,10 @@
       <div id="logo"><h1>CarMove</h1></div>
       <div>
         <ul>
-          <li><a href="">Accueil</a></li>
-          <li><a href="">Véhicules</a></li>
+          <li><RouterLink :to="`/`">Accueil</RouterLink></li>
+          <li>
+            <RouterLink :to="`/list`">Véhicules</RouterLink>
+          </li>
           <li><a href="">Contact</a></li>
         </ul>
       </div>
@@ -23,7 +25,7 @@ nav {
   background-color: #284cff;
   color: white;
   padding: 1rem 1.5rem;
-  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 ul {
   display: flex;

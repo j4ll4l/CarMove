@@ -11,4 +11,14 @@ export default [
     name: 'list',
     component: () => import('@/views/VehiclesView.vue'),
   },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/LoginView.vue'),
+  },
+  {
+    path: '/signup',
+    name: 'signup',
+    component: () => import('@/views/SignUp.vue'),
+  },
 ]

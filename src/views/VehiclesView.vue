@@ -1,30 +1,30 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import VehicleCard from '@/components/UI/VehicleCard.vue'
 
-const vehicles = ref([
-  {
-    id: 1,
-    name: 'Peugeot 208',
-    image: '/vehicle_photo.jpg',
-    prix: 15000,
-    info: { km: 45000, annee: 2021, energie: 'Essence' },
-  },
-  {
-    id: 2,
-    name: 'Renault Clio',
-    image: '/vehicle_photo.jpg',
-    prix: 13000,
-    info: { km: 60000, annee: 2020, energie: 'Diesel' },
-  },
-  {
-    id: 3,
-    name: 'Tesla Model 3',
-    image: '/vehicle_photo.jpg',
-    prix: 35000,
-    info: { km: 20000, annee: 2023, energie: 'Électrique' },
-  },
-])
+const vehicles = ref()
+
+onMounted(async () => {
+  try {
+    const response = await fetch('http://127.0.0.1:8000/api/vehicules')
+    const data = await response.json()
+
+    // Adaptation du format brut à celui utilisé par <VehicleCard />
+    vehicles.value = data.map((vehicle: any) => ({
+      id: vehicle.id,
+      name: `${vehicle.model.brand.name} ${vehicle.model.name}`,
+      image: '/vehicle_photo.jpg', // À adapter si une vraie image est disponible
+      prix: 15000, // à adapter si tu as un champ prix
+      info: {
+        km: vehicle.milage.toLocaleString('fr-FR'),
+        annee: new Date(vehicle.createdAt || Date.now()).getFullYear(),
+        energie: 'Essence', // à adapter si l'API fournit ce champ
+      },
+    }))
+  } catch (error) {
+    console.error('Erreur lors du chargement des véhicules :', error)
+  }
+})
 </script>
 
 <template>
@@ -60,6 +60,7 @@ const vehicles = ref([
 .main-content {
   display: flex;
   flex-direction: column;
+  padding: 1.5rem 0.5rem;
 }
 .vehicle-list {
   display: grid;

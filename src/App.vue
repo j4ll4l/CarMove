@@ -21,11 +21,9 @@ import VehicleCard from '@/components/UI/VehicleCard.vue'
 
   <!-- <RouterView /> -->
   <div class="app-layout">
-    <TheHeader />
     <main>
       <RouterView />
     </main>
-    <TheFooter />
   </div>
 </template>
 
