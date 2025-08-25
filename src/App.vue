@@ -28,11 +28,12 @@ import VehicleCard from '@/components/UI/VehicleCard.vue'
 </template>
 
 <style scoped>
-/* .app-layout {
+.app-layout {
   min-height: 100vh;
+  min-width: 100vh;
   display: flex;
   flex-direction: column;
-} */
+}
 main {
   /* flex: 1; */
   display: flex;

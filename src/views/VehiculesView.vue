@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import TheHeader from '@/components/Layout/TheHeader.vue'
+import TheFooter from '@/components/Layout/TheFooter.vue'
 import VehicleCard from '@/components/UI/VehicleCard.vue'
 
 const vehicles = ref()
@@ -9,16 +11,15 @@ onMounted(async () => {
     const response = await fetch('http://127.0.0.1:8000/api/vehicules')
     const data = await response.json()
 
-    // Adaptation du format brut à celui utilisé par <VehicleCard />
     vehicles.value = data.map((vehicle: any) => ({
       id: vehicle.id,
       name: `${vehicle.model.brand.name} ${vehicle.model.name}`,
-      image: '/vehicle_photo.jpg', // À adapter si une vraie image est disponible
-      prix: 15000, // à adapter si tu as un champ prix
+      image: '/vehicle_photo.jpg',
+      prix: 15000,
       info: {
         km: vehicle.milage.toLocaleString('fr-FR'),
         annee: new Date(vehicle.createdAt || Date.now()).getFullYear(),
-        energie: 'Essence', // à adapter si l'API fournit ce champ
+        energie: 'Essence',
       },
     }))
   } catch (error) {
@@ -28,38 +29,53 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="main-content">
-    <div class="select-row">
-      <select class="custom-select">
-        <option disabled selected>Marque</option>
-        <option>Peugeout</option>
-        <option>Renault</option>
-        <option>Tesla</option>
-      </select>
-      <select class="custom-select">
-        <option disabled selected>Prix</option>
-        <option>5 000€</option>
-        <option>10 000€</option>
-        <option>15 000€</option>
-      </select>
-      <select class="custom-select">
-        <option disabled selected>Carburant</option>
-        <option>Gasoile</option>
-        <option>Essence</option>
-        <option>Electric</option>
-        <option>Hybrid</option>
-      </select>
+  <div class="page-wrap">
+    <header>
+      <TheHeader />
+    </header>
+    <div class="main-content">
+      <div class="select-row">
+        <select class="custom-select">
+          <option disabled selected>Marque</option>
+          <option>Peugeout</option>
+          <option>Renault</option>
+          <option>Tesla</option>
+        </select>
+        <select class="custom-select">
+          <option disabled selected>Prix</option>
+          <option>5 000€</option>
+          <option>10 000€</option>
+          <option>15 000€</option>
+        </select>
+        <select class="custom-select">
+          <option disabled selected>Carburant</option>
+          <option>Gasoile</option>
+          <option>Essence</option>
+          <option>Electric</option>
+          <option>Hybrid</option>
+        </select>
+      </div>
+      <div class="vehicle-list">
+        <VehicleCard v-for="vehicule in vehicles" :key="vehicule.id" v-bind="vehicule" />
+      </div>
     </div>
-    <div class="vehicle-list">
-      <VehicleCard v-for="vehicule in vehicles" :key="vehicule.id" v-bind="vehicule" />
-    </div>
+    <footer>
+      <TheFooter />
+    </footer>
   </div>
 </template>
 
 <style scoped>
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  min-width: 100%;
+}
 .main-content {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   padding: 1.5rem 0.5rem;
 }
 .vehicle-list {

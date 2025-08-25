@@ -9,7 +9,7 @@ export default [
   {
     path: '/list',
     name: 'list',
-    component: () => import('@/views/VehiclesView.vue'),
+    component: () => import('@/views/VehiculesView.vue'),
   },
   {
     path: '/login',
